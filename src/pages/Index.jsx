@@ -37,7 +37,7 @@ const Index = () => {
         <Input placeholder="Player Name" value={playerName} onChange={(e) => setPlayerName(e.target.value)} mr={4} />
         <Input placeholder="Victory Points" value={victoryPoints} onChange={(e) => setVictoryPoints(e.target.value)} mr={4} />
         <Button leftIcon={<FaPlus />} colorScheme="blue" onClick={handleAddGame}>
-          Add Game
+          Add Game Add Game
         </Button>
       </Flex>
       <Table variant="simple">
