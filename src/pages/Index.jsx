@@ -5,15 +5,17 @@ import { FaPlus, FaTrash } from "react-icons/fa";
 const Index = () => {
   const [gameName, setGameName] = useState("");
   const [playerName, setPlayerName] = useState("");
+  const [victoryPoints, setVictoryPoints] = useState("");
   const [games, setGames] = useState([]);
 
   const handleAddGame = () => {
-    if (gameName && playerName) {
+    if (gameName && playerName && victoryPoints) {
       const newGame = {
         id: Date.now(),
         name: gameName,
         player: playerName,
         date: new Date().toLocaleDateString(),
+        victoryPoints: parseInt(victoryPoints),
       };
       setGames([...games, newGame]);
       setGameName("");
@@ -33,6 +35,7 @@ const Index = () => {
       <Flex mb={8}>
         <Input placeholder="Game Name" value={gameName} onChange={(e) => setGameName(e.target.value)} mr={4} />
         <Input placeholder="Player Name" value={playerName} onChange={(e) => setPlayerName(e.target.value)} mr={4} />
+        <Input placeholder="Victory Points" value={victoryPoints} onChange={(e) => setVictoryPoints(e.target.value)} mr={4} />
         <Button leftIcon={<FaPlus />} colorScheme="blue" onClick={handleAddGame}>
           Add Game
         </Button>
@@ -42,6 +45,7 @@ const Index = () => {
           <Tr>
             <Th>Game Name</Th>
             <Th>Player Name</Th>
+            <Th>Victory Points</Th>
             <Th>Date</Th>
             <Th></Th>
           </Tr>
@@ -51,6 +55,7 @@ const Index = () => {
             <Tr key={game.id}>
               <Td>{game.name}</Td>
               <Td>{game.player}</Td>
+              <Td>{game.victoryPoints}</Td>
               <Td>{game.date}</Td>
               <Td>
                 <IconButton icon={<FaTrash />} aria-label="Delete Game" onClick={() => handleDeleteGame(game.id)} />
